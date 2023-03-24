@@ -1,0 +1,39 @@
+import telebot
+from random import choise
+word = ["кот", "налоги", "жизни"]
+lives = 9
+se_word = choise(word)
+x = len(se_word)
+help = "_" * n
+win = False
+start = False
+
+
+token = "5849047397:AAEumNjCVY7cAgzhJq_HwI-7u58X3aeQB8A"
+bot = telebot.TeleBot(token)
+
+def update_help(letter):
+    global help, se_word, n
+    if letter == se_word[i]:
+        help_list = list(help)
+        help = help_list.join("")
+
+
+@bot.message_handler(content_tupes=["text"])
+def play(message):
+    global se_word, help, n, win, start, lives
+    user_letter = message.text
+
+    if start == True:
+        pass
+    else:
+        bot.send_messsage(message.chat.id, "Ира началась")
+        mess = ""
+        for simvol in help:
+            mess = mess + simvol + ""
+        bot.send_message(message.chat.id, mess)
+        bot.send_message(message.chat.id, mess, "у тя", + "<3" * lives)
+        start = True
+
+if __name__ == "__main__":
+    bot.infinity_polling()
